@@ -1,0 +1,21 @@
+<div class="todo">
+  <div class="todo__checkbox">
+    <p-checkbox
+      [formControl]="checked"
+      [binary]="true"
+    />
+  </div>
+  <div class="todo__main">
+    <p class="todo__text">
+      {{ todo?.title }}
+    </p>
+  </div>
+  <div>
+    <p-button
+      (click)="delete.emit(todo?.id)"
+      icon="pi pi-times"
+      severity="danger"
+
+    />
+  </div>
+</div>

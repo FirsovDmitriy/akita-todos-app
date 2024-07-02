@@ -1,0 +1,27 @@
+<div class="todos">
+  <form class="form" (submit)="add($event)">
+    <h2 class="form__title title">
+      Создать заметку
+    </h2>
+    <div class="form__row">
+      <input
+        class="form__text-field"
+        placeholder="Название заметки"
+        type="text"
+        pInputText
+        [formControl]="valueTodo"
+      />
+      <p-button
+        class="form__button"
+        type="submit"
+      >
+        <app-icon />
+      </p-button>
+    </div>
+  </form>
+  <h1 class="todos__title title">
+    Список заметок
+  </h1>
+  <app-todos-select />
+  <app-todo-list />
+</div>

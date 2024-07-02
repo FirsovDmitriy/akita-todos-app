@@ -1,0 +1,22 @@
+.todos {
+  padding-top: 52px;
+  max-width: 355px;
+}
+
+.form {
+  margin-bottom: 52px;
+}
+
+.form__title {
+  margin: 0 0 16px 0;
+}
+
+.form__row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr min-content;
+}
+
+.todos__title {
+  margin: 0 0 16px 0;
+}

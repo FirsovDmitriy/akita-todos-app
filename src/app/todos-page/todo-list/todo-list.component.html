@@ -1,0 +1,9 @@
+<div class="todo-list">
+  @for (item of todos; track $index) {
+    <app-todo
+      (delete)="delete($event)"
+      (complete)="complete($event)"
+      [todo]="item"
+    />
+  }
+</div>

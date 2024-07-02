@@ -1,0 +1,24 @@
+.todo {
+  border: 1px solid #D8DAE0;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-content: center;
+}
+
+.todo__checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #D8DAE0;
+}
+
+.todo__main {
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+.todo__text {
+  color: #434652;
+}

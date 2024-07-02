@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+@layer reset, primeng;
+
+@layer reset {
+  body {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  button,
+  input {
+    font-size: inherit;
+  }
+
+  svg {
+    display: flex;
+  }
+
+  h1,
+  h2,
+  p {
+    margin: 0;
+  }
+}
+
+@layer primeng {
+  .p-component {
+    font-size: inherit;
+  }
+
+  .p-inputtext {
+    font-size: 14px;
+  }
+
+  .p-inputtext,
+  .p-button,
+  .p-dropdown {
+    border-radius: 2px;
+  }
+
+  .p-dropdown {
+    width: 180px;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  color: #434652;
+}
