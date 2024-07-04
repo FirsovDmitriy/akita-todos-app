@@ -1,5 +1,5 @@
 <div class="todos">
-  <form class="form" (submit)="add($event)">
+  <form class="form" [formGroup]="formState" (ngSubmit)="add()">
     <h2 class="form__title title">
       Создать заметку
     </h2>
@@ -9,7 +9,7 @@
         placeholder="Название заметки"
         type="text"
         pInputText
-        [formControl]="valueTodo"
+        formControlName="valueTodo"
       />
       <p-button
         class="form__button"

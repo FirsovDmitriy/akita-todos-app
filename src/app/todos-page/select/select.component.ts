@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { FilterValues, initialOptions } from './select.module';
@@ -11,7 +11,8 @@ import { TodoQuery } from '../../state/todo.query';
   imports: [ReactiveFormsModule, DropdownModule],
   animations: [],
   templateUrl: './select.component.html',
-  styleUrl: './select.component.css'
+  styleUrl: './select.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosSelectComponent implements OnInit {
   options = initialOptions

@@ -7,15 +7,14 @@
   </div>
   <div class="todo__main">
     <p class="todo__text">
-      {{ todo?.title }}
+      {{ todo.title }}
     </p>
   </div>
   <div>
     <p-button
-      (click)="delete.emit(todo?.id)"
+      (click)="delete.emit(todo.id)"
       icon="pi pi-times"
       severity="danger"
-
     />
   </div>
 </div>

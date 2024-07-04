@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TodosSelectComponent } from './select/select.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoService } from '../state/todo.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
@@ -16,20 +16,21 @@ import { IconComponent } from '../icon/icon.component';
     ButtonModule,
     TodosSelectComponent,
     TodoListComponent,
-    IconComponent
+    IconComponent,
   ],
   templateUrl: './todos-page.component.html',
   styleUrl: './todos-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosPageComponent {
-  valueTodo = new FormControl('')
+  formState = new FormGroup({
+    valueTodo: new FormControl(''),
+  })
 
   constructor(private todoService:TodoService) {}
 
-  add(event:Event) {
-    event.preventDefault()
-
-    this.todoService.add(this.valueTodo.value as string)
-    this.valueTodo.setValue('')
+  add() {
+    this.todoService.add(this.formState.value.valueTodo ?? '')
+    this.formState.reset()
   }
 }

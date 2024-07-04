@@ -1,5 +1,5 @@
 <div class="todo-list">
-  @for (item of todos; track $index) {
+  @for (item of todos; track item.id) {
     <app-todo
       (delete)="delete($event)"
       (complete)="complete($event)"

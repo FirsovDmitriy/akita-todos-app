@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { Todo } from '../../../state/todo.model';
@@ -10,26 +17,22 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   imports: [ReactiveFormsModule, CheckboxModule, ButtonModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TodoComponent implements OnInit, OnChanges {
-  @Input() todo:Todo | undefined
+export class TodoComponent implements OnInit {
+  @Input() todo!: Todo;
   @Output() complete = new EventEmitter();
   @Output() delete = new EventEmitter();
 
-  checked = new FormControl(false);
-
-  ngOnChanges(): void {
-    if(this.todo != undefined) {
-      this.checked.setValue(this.todo.completed)
-    }
-  }
+  checked = new FormControl();
 
   ngOnInit(): void {
-    this.checked.valueChanges.subscribe(value => {
-      this.complete.emit({
-        ...this.todo,
-        completed: value,
-      });
+    if (this.todo != undefined) {
+      this.checked.setValue(this.todo.completed);
+    }
+
+    this.checked.valueChanges.subscribe((completed) => {
+      this.complete.emit({ id: this.todo.id, completed });
     });
   }
 }
