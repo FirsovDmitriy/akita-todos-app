@@ -20,7 +20,7 @@ export class TodoService {
     this.todoStore.remove(id)
   }
 
-  updateFilter(option: FilterValues) {
+  updateSelect(option: FilterValues) {
     this.todoStore.update({ ui: { filter: option } })
   }
 }

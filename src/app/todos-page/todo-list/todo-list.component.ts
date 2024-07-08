@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TodoComponent } from './todo/todo.component';
 import { Todo } from '../../state/todo.model';
 import { TodoService } from '../../state/todo.service';
 import { TodoQuery } from '../../state/todo.query';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [TodoComponent],
+  imports: [TodoComponent, AsyncPipe],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
-  todos: Todo[] = [];
+  items: Observable<Todo[]> = new Observable<Todo[]>()
 
-  constructor(private todoService: TodoService, private query: TodoQuery) {}
+  constructor(private todoService: TodoService,
+    private query: TodoQuery) {}
 
   complete(todo: Todo) {
     this.todoService.complete(todo);
@@ -25,9 +29,6 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.query.selectVisibleTodos$.subscribe((todos) => {
-      this.todos = todos;
-      console.log(this.todos);
-    });
+    this.items = this.query.selectVisibleTodos$
   }
 }

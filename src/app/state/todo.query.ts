@@ -11,9 +11,9 @@ import { map } from "rxjs";
 })
 export class TodoQuery extends QueryEntity<TodosState> {
 
-  visiabilityFilter$ = this.select(state => state.ui.filter)
+  visiabilitySelect$ = this.select(state => state.ui.filter)
 
-  selectVisibleTodos$ = this.visiabilityFilter$.pipe(
+  selectVisibleTodos$ = this.visiabilitySelect$.pipe(
     combineLatestWith(this.selectAll()),
     map(([filter, todos]) => this.getVisibleTodos(filter, todos))
   )
